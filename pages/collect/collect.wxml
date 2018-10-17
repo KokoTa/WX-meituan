@@ -1,0 +1,6 @@
+<!--pages/collect/collect.wxml-->
+<import src="../templates/list/list.wxml"/>
+
+<view class='collect-list'>
+  <template is="list" data="{{list: shopList}}"/>
+</view>

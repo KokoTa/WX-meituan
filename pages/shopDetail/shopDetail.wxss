@@ -1,0 +1,82 @@
+/* pages/shopDetail/shopDetail.wxss */
+@import '/assets/css/font-icon.wxss';
+/* 头部的商家信息和 list 模板样式很像，直接引入进行修改 */
+@import '/pages/templates/list/list.wxss';
+.list-item {
+  background: #fff;
+  padding: 30rpx;
+}
+.list-item image {
+  width: 237.5rpx;
+  height: 179rpx;
+}
+.list-item .list-info {
+  width: 430rpx;
+  overflow: hidden;
+}
+.shop-score {
+  font-size: 26rpx;
+  line-height: 50rpx;
+  color: #999;
+}
+.list-item .list-title,
+.list-score,
+.list-price,
+.list-position {
+  line-height: 45rpx;
+}
+
+/* 商家其他信息 */
+.shop-other {
+  background: #fff;
+  padding: 30rpx 60rpx 30rpx 30rpx;
+  overflow: hidden;
+  position: relative;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  border-bottom: 1px solid #ddd;
+}
+.shop-other::after {
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  margin-top: -30rpx;
+  font-size: 40rpx;
+  color: #333;
+}
+.shop-other text {
+  float: left;
+  color: #333;
+  margin-right: 20rpx;
+}
+.shop-other text::before {
+  font-size: 34rpx;
+  color: #999;
+  margin-right: 10rpx;
+}
+
+/* 商家地址及联系 */
+.shop-position {
+  background: #fff;
+  padding: 30rpx 30rpx 30rpx 80rpx;
+  position: relative;
+}
+.shop-position::before {
+  position: absolute;
+  left: 30rpx;
+  top: 50%;
+  margin-top: -18rpx;
+  font-size: 36rpx;
+}
+.shop-address {
+  font-size: 30rpx;
+  line-height: 60rpx;
+  display: block;
+  color: #333;
+}
+.shop-distance {
+  display: block;
+  font-size: 26rpx;
+  line-height: 50rpx;
+  color: #999;
+}

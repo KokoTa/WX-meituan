@@ -1,0 +1,83 @@
+/* pages/shopList/shopList.wxss */
+@import '/assets/css/font-icon.wxss';
+@import '../templates/list/list.wxss';
+
+/* 导航 */
+.list-nav {
+  box-sizing: border-box;
+  height: 80rpx;
+  border: 1px solid #e4e4e4;
+  display: flex;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+.list-nav text {
+  flex: 1;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+/* 调整图标样式 */
+.list-nav text::after {
+  margin-left: 10rpx;
+}
+/* 调整导航中间的 | 的样式 */
+.list-nav .ico {
+  flex: none;
+  width: 30rpx;
+  line-height: 80rpx;
+  color: #999;
+}
+.list-nav .active {
+  color: #ff7a2d;
+}
+
+/* 商家列表 */
+.shop-list {
+  padding-top: 80rpx;
+  background: #fff;
+}
+
+/* 导航列表 */
+.options {
+  display: none;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  top: 80rpx;
+  width: 100%;
+  background: #fff;
+  padding: 10rpx 30rpx;
+  z-index: 2;
+}
+.options text {
+  display: block;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  border-bottom: 1px solid #e4e4e4;
+}
+.show {
+  display: block;
+}
+.options .active {
+  color: #ff7a2d;
+}
+
+/* 遮罩 */
+.mask {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+.hidden {
+  display: none;
+}

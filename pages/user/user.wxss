@@ -1,0 +1,38 @@
+/* pages/user/user.wxss */
+@import '/assets/css/font-icon.wxss';
+
+.user-info {
+  padding: 30rpx;
+  background: #fff;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+.user-photo {
+  margin: 30rpx auto;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+.user-text {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 60rpx;
+}
+.user-text text {
+  margin: 0 10rpx;
+}
+.user-list navigator {
+  display: block;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  line-height: 120rpx;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  position: relative;
+}
+.user-list navigator::after {
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+}

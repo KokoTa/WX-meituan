@@ -1,0 +1,62 @@
+/* pages/cityList/cityList.wxss */
+scroll-view {
+  height: 100%;
+}
+/* 城市列表 */
+.city-list {
+ background: #fff;
+ font-size: 30rpx;
+ line-height: 90rpx;
+ color: #000;
+ padding: 0 30rpx;
+}
+.city-list-item {
+  border-bottom: 1px solid #ddd;
+}
+.city-list-item:last-child {
+  border: none;
+}
+.gps-type {
+  font-size: 24rpx;
+  color: #bfbfbf;
+  margin-left: 15rpx;
+}
+.city-index {
+  font-size: 30rpx;
+  line-height: 80rpx;
+  color: #333;
+  padding: 0 30rpx;
+}
+.city-hot {
+  overflow: hidden;
+  padding: 15rpx;
+}
+.city-hot-item {
+  float: left;
+  margin: 5rpx 8rpx;
+  width: 208rpx;
+  line-height: 69rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #333;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+/* 城市索引导航 */
+.city-index-list {
+  display: flex;
+  position: fixed;
+  right: 0rpx;
+  top: 0;
+  width: 52rpx;
+  height: 100%;
+}
+.city-index-inner {
+  margin: auto;
+  width: 100%;
+  font-size: 22rpx;
+  text-align: center;
+}
+.city-index-inner view {
+  padding: 5rpx 0;
+}

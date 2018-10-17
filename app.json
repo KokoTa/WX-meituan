@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shopList/shopList",
+    "pages/shopDetail/shopDetail",
+    "pages/user/user",
+    "pages/login/login",
+    "pages/collect/collect",
+    "pages/cityList/cityList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#181818",
+    "navigationBarTitleText": "美团点评",
+    "navigationBarTextStyle": "#fff"
+  }
+}

@@ -1,0 +1,44 @@
+<import src="../templates/list/list.wxml"/>
+
+<scroll-view
+  class="scroll-page"
+  scroll-y
+  bindscrolltolower="onScrollLower">
+  <!-- 头部 -->
+  <view class='header'>
+    <navigator class='city' url='/pages/cityList/cityList'>{{currentCity}}</navigator>
+    <navigator url='/pages/user/user' class='user-info'>
+      <image src='/assets/image/login.png'></image>
+    </navigator>
+  </view>
+  <!-- 选区 -->
+  <view class='nav-list'>
+    <navigator url='/pages/shopList/shopList?id=40'>
+      <image src='/assets/image/food.png'></image>
+      <text>美食</text>
+    </navigator>
+    <navigator url='/pages/shopList/shopList?id=45'>
+      <image src='/assets/image/hair.png'></image>
+      <text>美容/美发</text>
+    </navigator>
+    <navigator url='/pages/shopList/shopList?id=48'>
+      <image src='/assets/image/hotel.png'></image>
+      <text>酒店</text>
+    </navigator>
+    <navigator url='/pages/shopList/shopList?id=41'>
+      <image src='/assets/image/ktv.png'></image>
+      <text>KTV</text>
+    </navigator>
+    <navigator url='/pages/shopList/shopList?id=49'>
+      <image src='/assets/image/pedicure.png'></image>
+      <text>足疗/按摩</text>
+    </navigator>
+  </view>
+  <!-- 列表 -->
+  <view class='hot'>
+    <view class='hot-title'>猜你喜欢</view>
+    <template is="list" data="{{ list: guessLike }}"/>
+  </view>
+  <view class='load-more' wx:if="{{isLoading}}">加载中...</view>
+  <view class='load-more' wx:if="{{isLoadingAll}}">没有更多内容了</view>
+</scroll-view>

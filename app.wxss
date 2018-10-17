@@ -1,0 +1,30 @@
+/**app.wxss**/
+page {
+  height: 100%;
+  background: #f0f0f0;
+}
+
+.scroll-page {
+  height: 100%;
+}
+
+/* 加载样式 */
+.load-more {
+  font-size: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #333;
+}
+
+/* 改变导航点击的默认样式 */
+.navigator-hover {
+  background: transparent;
+}
+
+/* 按钮样式 */
+.btn {
+  margin: 20rpx auto;
+  width: 500rpx;
+  background: #f60 !important;
+  color: #fff !important;
+}

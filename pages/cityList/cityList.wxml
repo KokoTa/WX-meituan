@@ -1,0 +1,50 @@
+<!--pages/cityList/cityList.wxml-->
+<scroll-view scroll-y enable-back-to-top scroll-into-view="{{jumpId}}">
+  <!-- 搜索 -->
+  <view class='city-list'>
+    <view class='city-list-item' wx:if="{{hasLocationAuth}}">
+      {{localCity}}
+      <text class="gps-type">GPS定位</text>
+    </view>
+    <view wx:else>
+      <button open-type="openSetting">打开位置授权</button>
+    </view>
+  </view>
+  <!-- 历史记录 -->
+  <block wx:if="{{historyCitys.length}}">
+    <view class='city-index' id='history'>历史记录</view>
+    <view class='city-hot' bindtap="onSelectCity">
+      <view class='city-hot-item'
+        wx:for="{{historyCitys}}"
+        wx:key="index"
+        data-city="{{item}}"
+      >{{item}}</view>
+    </view>
+  </block>
+  <!-- 热门城市 -->
+  <view class='city-index' id='hot'>国内热门城市</view>
+  <view class='city-hot' bindtap="onSelectCity">
+    <view class='city-hot-item'
+      wx:for="{{['北京', '上海', '成都', '重庆', '广州', '杭州', '南京', '深圳', '苏州', '天津', '武汉', '西安']}}"
+      wx:key="index"
+      data-city="{{item}}"
+    >{{item}}</view>
+  </view>
+  <!-- 索引城市 -->
+  <view wx:for="{{cityData}}" wx:key="letter" bindtap="onSelectCity">
+    <view class='city-index' id="{{item.letter}}">{{item.letter}}</view>
+    <view class='city-list'>
+      <view class='city-list-item' wx:for="{{item.citys}}" wx:key="index" data-city="{{item}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+  <!-- 索引导航 -->
+  <view class='city-index-list'>
+    <view class='city-index-inner' catch:touchstart="touchStart" catch:touchmove="touchMove">
+      <view class="index-item" data-type="city-index" id="history" wx:if="{{historyCitys.length}}">历史</view>
+      <view class="index-item" data-type="city-index" id="hot">热门</view>
+      <view class="index-item" wx:for="{{cityData}}" wx:key="letter" data-type="city-index" id="{{item.letter}}">{{item.letter}}</view>
+    </view>
+  </view>
+</scroll-view>

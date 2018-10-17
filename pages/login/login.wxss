@@ -1,0 +1,6 @@
+/* pages/login/login.wxss */
+.login-text {
+  font-size: 30rpx;
+  line-height: 120rpx;
+  text-align: center;
+}

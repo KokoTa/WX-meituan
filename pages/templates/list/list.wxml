@@ -1,0 +1,34 @@
+<wxs module="tag">
+  module.exports = function(str) {
+    var tags = str.split(' ');
+    return tags;
+  }
+</wxs>
+
+<template name='list'>
+  <view class='list'>
+
+    <view class='list-item' wx:for="{{list}}" wx:key="id">
+      <navigator url='/pages/shopDetail/shopDetail?id={{item.id}}'>
+        <image src='{{item.image}}'></image>
+        <view class='list-info'>
+          <view class='list-title'>{{item.title}}</view>
+          <view class='clear'>
+            <view class='list-score'>
+              <view class='score' style='width:{{item.score*10}}%'></view>
+            </view>
+            <view class='list-price'>￥{{item.price}}/人</view>
+          </view>
+          <view class='list-position'>
+            <text>{{item.place}} KTV</text>
+            <text class='list-distance'>{{item.distance}}m</text>
+          </view>
+          <view class='list-position list-label'>
+            <text wx:for="{{tag(item.label)}}" wx:key="index">{{item}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+
+  </view>
+</template>

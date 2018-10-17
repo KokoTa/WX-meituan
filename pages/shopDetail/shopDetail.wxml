@@ -1,0 +1,42 @@
+<!--pages/shopDetail/shopDetail.wxml-->
+<view class='shop-detail'>
+  <!-- 商家基本信息 -->
+  <view class='list-item'>
+    <image src='{{shopDetail.image}}'></image>
+    <view class='list-info'>
+      <view class='list-title'>{{shopDetail.title}}</view>
+      <view class='clear'>
+        <view class='list-score'>
+          <view class='score' style="width: {{shopDetail.score * 10}}%;"></view>
+        </view>
+        <view class='list-price'>￥{{shopDetail.price}}/人</view>
+      </view>
+      <view class='shop-score'>
+        环境：{{shopDetail.environment}} 服务：{{shopDetail.service}}
+      </view>
+      <view class='list-position'>
+        {{shopDetail.place}} KTV
+      </view>
+    </view>
+  </view>
+  <!-- 商家其他信息 -->
+  <view class='shop-other iconfont icon-xiangyou'>
+    <text class='iconfont icon-web-icon-'>{{shopDetail.shopHour}}</text>
+    <text class='iconfont icon-wifi' wx:if="{{shopDetail.hasWifi}}">WIFI</text>
+    <text class='iconfont icon-yezishu' wx:if="{{shopDetail.hasSight}}">景观位</text>
+    <text class='iconfont icon-fangjian' wx:if="{{shopDetail.hasBox}}">包厢</text>
+    <text class='iconfont icon-shafa' wx:if="{{shopDetail.hasSofa}}">沙发</text>
+    <text class='iconfont icon-weibiaoti202-copy' wx:if="{{shopDetail.hasBabyChair}}">宝宝椅</text>
+  </view>
+  <!-- 商家地址及联系 -->
+  <view class='shop-position iconfont icon-dingwei'>
+    <text class='shop-address'>{{address}}</text>
+    <block wx:if="{{hasLocationAuth}}">
+      <text class='shop-distance' wx:if="{{distance !== -1}}">距您步行{{distance || '--'}}m</text>
+      <text class='shop-distance' wx:else>距离过长</text>
+    </block>
+    <button wx:else open-type="openSetting">授权位置</button>
+  </view>
+  <button type='default' class='btn' bindtap="tapFavorite" wx:if="{{isFavorite}}">取消收藏</button>
+  <button type='default' class='btn' bindtap="tapFavorite" wx:else>收藏店铺</button>
+</view>

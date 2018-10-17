@@ -1,0 +1,3 @@
+<!--pages/login/login.wxml-->
+<view class='login-text'>授权后才能进行下一步使用</view>
+<button type='default' class='btn' open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">点击进行授权</button>

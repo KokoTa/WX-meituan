@@ -1,0 +1,24 @@
+<!--pages/user/user.wxml-->
+<view class='user-info'>
+  <button
+    type='default'
+    class='btn'
+    wx:if="{{!hasLogin}}"
+    open-type="getUserInfo"
+    bindgetuserinfo="onGetUserInfo">
+    获取登录授权
+  </button>
+  <view class="user" wx:else>
+    <image class='user-photo' src="{{user.avatarUrl}}"></image>
+    <view class='user-text'>
+      <text>{{user.nickName}}</text>
+      <text>{{user.gender === 1 ? '男' : '女'}}</text>
+    </view>
+    <view class='user-text'>
+      <text>{{user.country}} {{user.province}} {{user.city}}</text>
+    </view>
+  </view>
+</view>
+<view class='user-list' wx:if="{{hasLogin}}">
+  <navigator class='iconfont icon-xiangyou' url='/pages/collect/collect'>收藏列表 </navigator>
+</view>
