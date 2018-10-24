@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
-	"appid": "wx1b13619a00914149",
+	"appid": "wx8695e5d50590717f",
 	"projectname": "meituan",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -59,7 +59,13 @@
 				{
 					"id": -1,
 					"name": "cityList",
-					"pathName": "pages/cityList/cityList"
+					"pathName": "pages/cityList/cityList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/test/test"
 				}
 			]
 		}

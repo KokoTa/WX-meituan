@@ -18,6 +18,7 @@ let apiSpace = {
     'request',
     'uploadFile',
     'downloadFile',
+    'saveImageToPhotosAlbum',
     'connectSocket',
     'onSocketOpen',
     'onSocketError',
@@ -75,6 +76,10 @@ let apiSpace = {
     // 设置
     'getSetting',
     'openSetting',
+  ],
+  // 分享
+  shareAPI: [
+    'showShareMenu'
   ]
 }
 

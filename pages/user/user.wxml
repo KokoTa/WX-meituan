@@ -22,3 +22,6 @@
 <view class='user-list' wx:if="{{hasLogin}}">
   <navigator class='iconfont icon-xiangyou' url='/pages/collect/collect'>收藏列表 </navigator>
 </view>
+
+
+<navigator url='/pages/test/test'>跳转到功能测试页</navigator>

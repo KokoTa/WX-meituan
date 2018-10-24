@@ -6,7 +6,8 @@
     "pages/user/user",
     "pages/login/login",
     "pages/collect/collect",
-    "pages/cityList/cityList"
+    "pages/cityList/cityList",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

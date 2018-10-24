@@ -73,7 +73,7 @@ const server = http.createServer((req, res) => {
   }
 
   /**
-   * 登录并解析用户数据
+   * 登录并解析用户数据/解析用户手机号
    * /login GET
    * header:
    *  'X-WX-Code': code,

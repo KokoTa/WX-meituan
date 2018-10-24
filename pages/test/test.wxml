@@ -1,0 +1,46 @@
+<!--pages/test/test.wxml-->
+<view class="test">
+  <view class="test-item">
+    <view class="test-title">获取 formId 来发送模板信息</view>
+    <form report-submit bindsubmit="sendTemplate">
+      <button formType="submit">点击发送模板消息</button>
+    </form>
+    <view class="text-result">formId：{{formId}}</view>
+  </view>
+
+  <view class="test-item">
+    <view class="test-title">获取用户手机号</view>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击获取用户手机号</button>
+    <view class="text-result">手机号：{{phoneNumber}}</view>
+  </view>
+
+  <view class="test-item">
+    <view class="test-title">下载第一张图片</view>
+    <swiper class="swiper" indicator-dots>
+      <block wx:for="{{imageList}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="150"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <button bindtap="downLoadImage">点击下载第一张图片</button> 
+  </view>
+
+  <view class="test-item">
+    <view class="test-title">短信验证</view>
+    <button bindtap="openMask">点击打开遮罩层</button> 
+  </view>
+
+  <view class="mask {{openMask ? 'show' : ''}}" data-type="mask" bindtap="hiddenMask">
+    <view class="mask-content">
+      <view class="mask-title">请输入验证码</view>
+      <view class="mask-number">
+        <view class="mask-item {{currentCode === 1 ? 'active' : ''}}">{{code[0]}}</view>
+        <view class="mask-item {{currentCode === 2 ? 'active' : ''}}">{{code[1]}}</view>
+        <view class="mask-item {{currentCode === 3 ? 'active' : ''}}">{{code[2]}}</view>
+        <view class="mask-item {{currentCode === 4 ? 'active' : ''}}">{{code[3]}}</view>
+      </view>
+      <input class="mask-input" type="number" focus="{{focus}}" bindinput="inputCode" maxlength="4"/>
+    </view>
+  </view>
+</view>
