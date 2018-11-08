@@ -11,7 +11,7 @@ view {
   font-size: 26px;
   text-align: center;
   color: #fff;
-  background: #fff;
+  background: lightblue;
   text-shadow: 0 0 10px black;
   padding: 50rpx 0;
   border: 5px solid lightgray;
@@ -67,4 +67,11 @@ view {
   position: absolute;
   top: -100%;
   left: -100%;
+}
+
+button {
+  background: lightcyan;
+  line-height: 150rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
 }

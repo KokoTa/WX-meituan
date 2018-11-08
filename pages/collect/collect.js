@@ -19,7 +19,7 @@ Page({
     req.getFavoriteList({
       open_id: openId
     }).then((res) => {
-      const shopList = res.msg.articles;
+      const shopList = res.msg ? res.msg.articles : [];
       this.setData({
         shopList
       })

@@ -43,4 +43,20 @@
       <input class="mask-input" type="number" focus="{{focus}}" bindinput="inputCode" maxlength="4"/>
     </view>
   </view>
+
+  <view class="test-item">
+    <view class="test-title">获取首页的小程序二维码</view>
+    <button bindtap="getWxCode">点击获取二维码</button>
+    <view class="text-result">
+      <image src="{{imageData}}"></image>
+    </view>
+  </view>
+
+  <view class="test-item">
+    <view class="test-title">上传文件</view>
+    <button bindtap="uploadFile">点击选择文件</button>
+    <view class="text-result">
+      {{uploadStatus}}
+    </view>
+  </view>
 </view>

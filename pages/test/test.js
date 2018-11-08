@@ -14,11 +14,14 @@ Page({
     focus: false,
     code: [],
     currentCode: -1,
+    imageData: '',
+    uploadStatus: '',
   },
 
   onLoad() {
     // 设置分享
     api.showShareMenu({
+      title: '分享',
       withShareTicket: true
     })
     // 消息提示
@@ -27,6 +30,18 @@ Page({
     //   duration: 1000,
     //   mask: true,
     // })
+  },
+
+  /**
+   * 监听点击转发按钮
+   */
+  onShareAppMessage() {
+    console.log(1);
+    return {
+      title: '美团应用',
+      path: '/pages/test/test',
+      imageUrl: 'https://tu.duotoo.com/uploads/tu/201708/9999/rn72e062de9e.png',
+    }
   },
 
   /**
@@ -161,5 +176,45 @@ Page({
     const { value } = e.detail;
     const arr = value.split('');
     this.setData({ code: arr, currentCode: arr.length });
+  },
+
+  /**
+   * 获取小程序二维码
+   */
+  getWxCode() {
+    api.request({
+      url: 'http://localhost:3000/getWxCode',
+      responseType: 'arraybuffer' // 接受类型为 arraybuffer
+    })
+    .then((res) => {
+      const base64 = wx.arrayBufferToBase64(res.data); // 将 arraybuffer 转为 base64
+      this.setData({ imageData: 'data:image/jpg;base64,' + base64 });
+    });
+  },
+
+  /**
+   * 上传文件
+   */
+  uploadFile() {
+    const that = this;
+
+    wx.chooseImage({
+      success (res) {
+        that.setData({ uploadStatus: 'Uploading...'});
+        const tempFilePaths = res.tempFilePaths;
+        wx.uploadFile({ // 一次只能上传一个文件
+          url: 'http://localhost:3000/uploadFile',
+          filePath: tempFilePaths[0],
+          name: 'SurpriseMotherFucker',
+          formData: {
+            'user': 'test'
+          },
+          success (res){
+            console.log(res)
+            that.setData({ uploadStatus: 'Success!'});
+          }
+        })
+      }
+    })
   }
 })

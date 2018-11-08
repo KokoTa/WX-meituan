@@ -2,6 +2,8 @@ const axios = require('axios');
 const http = require('http');
 const url = require('url');
 const queryString = require('querystring');
+const formidable = require('formidable');
+const u = require('util');
 const util = require('./util/util');
 const WXBizDataCrypt = require('./libs/WXBizDataCrypt');
 
@@ -10,6 +12,9 @@ mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', () => console.error('connect fail'));
 db.on('open', () => console.log('connect success'));
+
+const appId = ''; // 隐私常量
+const appSecret = ''; // 隐私常量
 
 // 方便起见，全部写到了一起
 const server = http.createServer((req, res) => {
@@ -81,8 +86,6 @@ const server = http.createServer((req, res) => {
    *  'X-WX-IV': userInfo.iv,
    */
   if (reqUrl.pathname === '/login'  && req.method === 'GET') {
-    const appId = ''; // 隐私常量
-    const appSecret = ''; // 隐私常量
     let sessionKey = '';
     let openId = '';
     const code = req.headers['x-wx-code'];
@@ -101,8 +104,8 @@ const server = http.createServer((req, res) => {
         const pc = new WXBizDataCrypt(appId, sessionKey);
         const data = pc.decryptData(encryptedData , iv);
         util.resMsg(res, 200, data);
-      }).catch(() => {
-        util.resMsg(res, 500, '解析失败，请重试');
+      }).catch((err) => {
+        util.resMsg(res, 500, err);
       })
   }
 
@@ -175,6 +178,52 @@ const server = http.createServer((req, res) => {
       // 查询商家
       util.getFavoriteList(res, json);
     });
+  }
+
+  /**
+   * 获取二维码
+   * /getWxCode GET
+   */
+  if (reqUrl.pathname === '/getWxCode' && req.method === 'GET') {
+    util.getAccessToken(appId, appSecret)
+      .then((token) => {
+        if (token) {
+          axios.post(`https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${token}`, {
+            page: 'pages/index/index',
+            scene: 'id=1'
+          }, {
+            responseType: 'arraybuffer', // 以 Buffer 数组的形式获取
+          })
+          .then((result) => {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'image/jpg');
+            res.end(Buffer.from(result.data));
+          });
+        } else {
+          util.resMsg(res, 500, 'Bad code request');
+        }
+      })
+      .catch((err) => {
+        util.resMsg(res, 500, err.message);
+      });
+  }
+
+  /**
+   * 上传文件
+   * /uploadFile POST
+   */
+  if (reqUrl.pathname === '/uploadFile' && req.method === 'POST') {
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function(err, fields, files) {
+      if (err) util.resMsg(res, 500, err.message);
+      console.log(fields);
+      console.log(files);
+      res.end("OK");
+    });
+    // form.keepExtensions = true;
+    // form.multiples = true;
+    // form.uploadDir = "./assets";
   }
 });
 

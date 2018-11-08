@@ -1,3 +1,5 @@
+const fs = require('fs');
+const axios = require('axios');
 const queryString = require('querystring');
 const Shop = require('../db/model').Shop;
 const User = require('../db/model').User;
@@ -155,10 +157,32 @@ function getFavoriteList(res, body) {
   User.findOne({ open_id: body.open_id })
     .populate('articles') // 关联查询请参见 /db/schema.js
     .exec((err, data) => {
-      console.log(1)
       if (err) return resMsg(res, 404, err);
       return resMsg(res, 200, data);
     });
+}
+
+/**
+ * 检查并获取 access_token
+ */
+function getAccessToken(appId, appSecret) {
+  return new Promise((resolve) => {
+    const data = fs.readFileSync('./assets/access_token.json');
+    const token = JSON.parse(data);
+    const now = new Date().getTime();
+
+    if (token.expires <= now) { // 过期就重新获取 token（因为用的公司项目，所以他们请求了新token，我这里缓存的token就会无效）
+      axios.get(`https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${appSecret}`)
+        .then((result) => {
+          const data = result.data;
+          data.expires = now + data.expires_in * 1000;
+          fs.writeFileSync('./assets/access_token.json', JSON.stringify(data)); // 写入缓存
+          resolve(data.access_token);
+        })
+    } else { // 没过期就读取缓存
+      resolve(token.access_token);
+    }
+  })
 }
 
 module.exports = {
@@ -169,5 +193,6 @@ module.exports = {
   checkFavorite,
   addFavorite,
   delFavorite,
-  getFavoriteList
+  getFavoriteList,
+  getAccessToken
 }
