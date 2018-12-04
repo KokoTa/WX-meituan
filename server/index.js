@@ -3,7 +3,6 @@ const http = require('http');
 const url = require('url');
 const queryString = require('querystring');
 const formidable = require('formidable');
-const u = require('util');
 const util = require('./util/util');
 const WXBizDataCrypt = require('./libs/WXBizDataCrypt');
 

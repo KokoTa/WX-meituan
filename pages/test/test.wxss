@@ -2,6 +2,9 @@
 view {
   text-align: center;
 }
+.test {
+  padding-bottom: 100rpx;
+}
 
 .test-item {
   margin-bottom: 100rpx;
@@ -74,4 +77,45 @@ button {
   line-height: 150rpx;
   font-weight: bold;
   margin-bottom: 10rpx;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: lightgreen;
+  margin-bottom: 0;
+  z-index: 9999;
+}
+
+.info-style {
+  height: 100rpx;
+  width: 100%;
+  position: relative;
+  /* background: #000; */
+  background: #fff;
+  border-bottom: 1rpx solid black;
+}
+.info-movable-area {
+  width: calc(100% - 100rpx);
+  height: 100%;
+}
+.info-movable-view {
+  width: calc(100% + 100rpx);
+  height: 100%;
+  line-height: 100rpx;
+  background: #fff;
+  z-index: 2;
+}
+.info-delete-style {
+  position: absolute;
+  width: 100rpx;
+  top: 0;
+  right: 0;
+  line-height: 100rpx;
+  text-align: center;
+  color: white;
+  background: orangered;
+  z-index: 1;
 }

@@ -2,15 +2,15 @@
 	"description": "项目配置文件",
 	"packOptions": {
 		"ignore": [
-      {
-        "type": "folder",
-        "value": "doc"
-      },
-      {
-        "type": "file",
-        "value": "README.md"
-      }
-    ]
+			{
+				"type": "folder",
+				"value": "doc"
+			},
+			{
+				"type": "file",
+				"value": "README.md"
+			}
+		]
 	},
 	"setting": {
 		"urlCheck": false,
@@ -20,7 +20,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
+	"libVersion": "2.4.1",
 	"appid": "wx8695e5d50590717f",
 	"projectname": "meituan",
 	"debugOptions": {

@@ -16,6 +16,9 @@ Page({
     currentCode: -1,
     imageData: '',
     uploadStatus: '',
+    posterUrl: 'http://www.mikufan.com/wp-content/uploads/2015/08/52295045_p0.jpg',
+    infoList: [],
+    startX: 0,
   },
 
   onLoad() {
@@ -30,6 +33,19 @@ Page({
     //   duration: 1000,
     //   mask: true,
     // })
+
+    // 获取左滑删除的信息列表
+    api.request({
+      url: 'https://www.easy-mock.com/mock/5c050e88f57279499b6ac0e9/test/getList'
+    })
+    .then((res) => {
+      this.setData({
+        infoList: res.data.data.list.map((i) => {
+          i.x = 0;
+          return i;
+        })
+      })
+    })
   },
 
   /**
@@ -216,5 +232,42 @@ Page({
         })
       }
     })
+  },
+
+  /**
+   * 当惯性滑动超过 “删除” 按钮一半大小时，直接划过去
+   * 但该方法在慢速拖动时会鬼畜
+   */
+  // handleMovableChange(e) { // TODO 通过 touch 解决问题
+  //   const { source, x } = e.detail
+  //   const { index } = e.target.dataset
+
+  //   if (source === 'touch' && x < -25) {
+  //     const newData = this.data.infoList.slice();
+  //     newData[index].x = -50;
+  //     this.setData({ infoList: newData });
+  //   } else if (source === 'touch' && x > -25) {
+  //     const newData = this.data.infoList.slice();
+  //     newData[index].x = 0;
+  //     this.setData({ infoList: newData });
+  //   }
+  // }
+  handleMovableStart(e) {
+    const { clientX } = e.changedTouches[0]
+    this.setData({ startX: clientX })
+  },
+  handleMovableEnd(e) {
+    const { clientX } = e.changedTouches[0]
+    const { index } = e.target.dataset
+    const diffX = clientX - this.data.startX
+    const newData = this.data.infoList.slice()
+
+    if (diffX < -25) {
+      newData[index].x = -50
+    } else {
+      newData[index].x = 0
+    }
+
+    this.setData({ infoList: newData })
   }
 })
