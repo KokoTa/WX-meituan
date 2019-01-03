@@ -1,5 +1,6 @@
 // pages/test/test.js
 const api = require('../../utils/api');
+const App = getApp();
 
 Page({
   data: {
@@ -19,6 +20,7 @@ Page({
     posterUrl: 'http://www.mikufan.com/wp-content/uploads/2015/08/52295045_p0.jpg',
     infoList: [],
     startX: 0,
+    navTotalHeight: 0
   },
 
   onLoad() {
@@ -46,6 +48,20 @@ Page({
         })
       })
     })
+
+    // 获取导航栏高度，这里为了方便就设置在这个页面下
+    // 开发时应该在页面入口页进行获取
+    wx.getSystemInfo({
+      success: res => {
+        // 由于每个机型得状态栏不同，所以需要在进入入口页时获取状态栏高度
+        App.globalData.statusBarHeight = res.statusBarHeight;
+      }, fail(err) {
+        console.log(err);
+      }
+    })
+
+    // 拿到总的导航栏高度
+    this.setData({ navTotalHeight: App.globalData.navTotalHeight })
   },
 
   /**
@@ -269,5 +285,7 @@ Page({
     }
 
     this.setData({ infoList: newData })
-  }
+  },
+
+
 })

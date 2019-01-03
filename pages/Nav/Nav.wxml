@@ -1,0 +1,8 @@
+<!--pages/Nav/Nav.wxml-->
+<view class="nav" style="height: {{ navHeight }}px; padding-top: {{ statusBarHeight }}px">
+  <view wx:if="{{showBack}}" class="back" bind:tap="handleBack">B</view>
+  <view class="home" bind:tap="handleHome">H</view>
+  <view class="title">
+    <view class="title-content">Hello</view>
+  </view>
+</view>

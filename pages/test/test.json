@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "功能测试页"
+  "navigationBarTitleText": "功能测试页",
+  "usingComponents": {
+    "custom-nav": "../Nav/Nav"
+  }
 }

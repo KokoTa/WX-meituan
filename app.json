@@ -13,6 +13,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#181818",
     "navigationBarTitleText": "美团点评",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "#fff",
+    "navigationStyle": "custom"
   }
 }

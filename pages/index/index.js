@@ -2,6 +2,11 @@
 const req = require('../../utils/req');
 
 Page({
+  globalData: {
+    statusBarHeight: 0, // 状态栏高度
+    navTotalHeight: 0, // 实际导航栏高度
+  },
+
   data: {
     guessLike: [],
     page: 1,

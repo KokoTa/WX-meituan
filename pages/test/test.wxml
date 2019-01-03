@@ -1,5 +1,7 @@
 <!--pages/test/test.wxml-->
-<view class="test">
+<custom-nav></custom-nav>
+
+<view class="test" style="margin-top: {{navTotalHeight}}px">
   <view class="test-item">
     <view class="test-title">获取 formId 来发送模板信息</view>
     <form report-submit bindsubmit="sendTemplate">

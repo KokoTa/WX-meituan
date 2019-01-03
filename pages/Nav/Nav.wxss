@@ -1,0 +1,30 @@
+/* pages/Nav/Nav.wxss */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: #000;
+  color: #fff;
+  line-height: 45px;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.title-content {
+  max-width: 400rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.back, .home {
+  float: left;
+  width: 40px;
+}
+
