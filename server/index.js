@@ -12,8 +12,8 @@ const db = mongoose.connection;
 db.on('error', () => console.error('connect fail'));
 db.on('open', () => console.log('connect success'));
 
-const appId = ''; // 隐私常量
-const appSecret = ''; // 隐私常量
+const appId = 'wx8695e5d50590717f'; // 隐私常量
+const appSecret = 'd655f1efd3ee5fbdb1009db463507f05'; // 隐私常量
 
 // 方便起见，全部写到了一起
 const server = http.createServer((req, res) => {

@@ -20,7 +20,8 @@ Page({
     posterUrl: 'http://www.mikufan.com/wp-content/uploads/2015/08/52295045_p0.jpg',
     infoList: [],
     startX: 0,
-    navTotalHeight: 0
+    navTotalHeight: 0,
+    swiperIndex: 0
   },
 
   onLoad() {
@@ -254,7 +255,7 @@ Page({
    * 当惯性滑动超过 “删除” 按钮一半大小时，直接划过去
    * 但该方法在慢速拖动时会鬼畜
    */
-  // handleMovableChange(e) { // TODO 通过 touch 解决问题
+  // handleMovableChange(e) {
   //   const { source, x } = e.detail
   //   const { index } = e.target.dataset
 
@@ -287,5 +288,10 @@ Page({
     this.setData({ infoList: newData })
   },
 
-
+  // 模拟 tab 的左右滑动行为，滑动后可以进行数据获取
+  handleSwiperChange() {
+    this.setData({
+      swiperIndex: ++this.data.swiperIndex
+    })
+  }
 })

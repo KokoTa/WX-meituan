@@ -66,7 +66,7 @@
     <view class="test-title">视频播放</view>
     <view class="text-result">
       <video src="http://vjs.zencdn.net/v/oceans.mp4"></video>
-      <button class="fixed">我要遮挡 Video 组件！</button>
+      <!-- <button class="fixed">我要遮挡 Video 组件！</button> -->
     </view>
   </view>
 
@@ -87,5 +87,17 @@
       </movable-area>
       <view class="info-delete-style">删除</view>
     </view>
+  </view>
+
+  <view class="test-item">
+    <view class="test-title">Swiper 模拟滑动 Tab</view>
+    <swiper indicator-dots="{{false}}" autoplay="{{false}}" bindchange="handleSwiperChange">
+      <swiper-item>
+        {{swiperIndex}}
+      </swiper-item>
+      <swiper-item>
+        {{swiperIndex}}
+      </swiper-item>
+    </swiper>
   </view>
 </view>
